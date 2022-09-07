@@ -136,8 +136,10 @@ export function styled<
         const Styled: Component = () => {
             const host = useHost();
             const props = Object.fromEntries(
+                // eslint-disable-next-line arrow-body-style
                 Object.entries(host.current.attributes).map(([, attr]) => {
-                    host.current.removeAttribute(attr.nodeName);
+                    // TODO: Dot not forward all props
+                    // host.current.removeAttribute(attr.nodeName);
                     return [attr.nodeName, attr.nodeValue];
                 })
             );
