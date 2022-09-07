@@ -1,6 +1,7 @@
+import { useAttributes } from "@atomico/hooks/use-attributes";
 import { useCssLightDom } from "@atomico/hooks/use-css-light-dom";
 import hash from "@emotion/hash";
-import { c, Component, h, useHost } from "atomico/core";
+import { c, Component, h } from "atomico/core";
 import { css } from "./css";
 import { CreateStyledComponent } from "./types";
 import { interleave } from "./utils";
@@ -129,27 +130,19 @@ export function styled<
         const name = `css-${hash(JSON.stringify(rawStyles))}`;
 
         const styles =
-            rawStyles[0] == null || rawStyles[0].raw === undefined
+            rawStyles[0] == null || rawStyles[0].raw == null
                 ? rawStyles
                 : interleave(rawStyles);
 
         const Styled: Component = () => {
-            const host = useHost();
-            const props = Object.fromEntries(
-                // eslint-disable-next-line arrow-body-style
-                Object.entries(host.current.attributes).map(([, attr]) => {
-                    // TODO: Dot not forward all props
-                    // host.current.removeAttribute(attr.nodeName);
-                    return [attr.nodeName, attr.nodeValue];
-                })
-            );
+            const props = useAttributes();
             useCssLightDom(css.apply(props, [":host{", ...styles, "}"]));
             return h("host", {});
         };
 
         Styled.props = {};
 
-        if (!customElements.get(name)) {
+        if (customElements.get(name) == null) {
             customElements.define(name, c(Styled, elements[element]), {
                 extends: element,
             });
