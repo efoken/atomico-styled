@@ -1,0 +1,37 @@
+{
+    "name": "atomico-styled",
+    "version": "1.0.0",
+    "description": "Styled components for Atomico",
+    "author": "Eike Foken <eikefoken@gmail.com>",
+    "license": "MIT",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsup src/index.ts",
+        "lint": "eslint \"**/*.{ts,tsx}\"",
+        "format": "prettier --write \"**/*.{ts,tsx}\""
+    },
+    "dependencies": {
+        "@atomico/hooks": "^3.46.1",
+        "@emotion/hash": "^0.9.0",
+        "@emotion/serialize": "^1.1.0",
+        "atomico": "^1.62.4",
+        "stylis": "^4.1.1"
+    },
+    "devDependencies": {
+        "@atomico/vite": "^1.5.1",
+        "@types/stylis": "^4.0.2",
+        "@typescript-eslint/eslint-plugin": "^5.36.2",
+        "@typescript-eslint/parser": "^5.36.2",
+        "eslint": "^8.23.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-airbnb-typescript": "^17.0.0",
+        "eslint-config-prettier": "^8.5.0",
+        "prettier": "^2.7.1",
+        "tsup": "^6.2.3",
+        "typescript": "^4.8.2",
+        "vite": "^3.1.0"
+    }
+}
