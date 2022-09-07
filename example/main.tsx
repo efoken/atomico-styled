@@ -1,26 +1,41 @@
 import { c, render, useState } from "atomico/core";
-import { styled } from "../src";
+import { styled, ThemeProvider } from "../src";
+
+const theme = {
+    colors: {
+        brand: "red",
+    },
+    space: 8,
+};
 
 const StyledTest = styled("p")<{ color: string }>`
+    background-color: ${(props) => (props.theme as any).colors.brand};
     color: ${(props) => props.color};
-    background-color: gray;
+    margin-block: 20px;
+    padding: ${(props) => (props.theme as any).space}px;
+
+    &:hover {
+        color: grey;
+    }
 `;
 
 function app() {
-    const [color, setColor] = useState("red");
+    const [color, setColor] = useState("black");
 
     return (
         <host shadowDom>
-            <StyledTest color={color}>Test</StyledTest>
-            <button
-                onclick={() =>
-                    setColor((prevColor) =>
-                        prevColor === "red" ? "blue" : "red"
-                    )
-                }
-            >
-                Change color
-            </button>
+            <ThemeProvider value={theme}>
+                <StyledTest color={color}>Test</StyledTest>
+                <button
+                    onclick={() =>
+                        setColor((prevColor) =>
+                            prevColor === "black" ? "white" : "black"
+                        )
+                    }
+                >
+                    Change color
+                </button>
+            </ThemeProvider>
         </host>
     );
 }

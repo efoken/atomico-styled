@@ -2,8 +2,9 @@ import { useAttributes } from "@atomico/hooks/use-attributes";
 import { useCssLightDom } from "@atomico/hooks/use-css-light-dom";
 import hash from "@emotion/hash";
 import { c, Component, h } from "atomico/core";
+import { useTheme } from "./context";
 import { css } from "./css";
-import { CreateStyledComponent } from "./types";
+import { StyledFunction } from "./types";
 import { interleave } from "./utils";
 
 const elements: Partial<
@@ -87,9 +88,9 @@ const elements: Partial<
 export function styled<
     Tag extends keyof HTMLElementTagNameMap,
     Props extends object = {}
->(element: Tag): CreateStyledComponent<Props> {
+>(element: Tag): StyledFunction<Props> {
     return (...rawStyles: any[] | any) => {
-        const name = `css-${hash(JSON.stringify(rawStyles))}`;
+        const name = `styled-${hash(JSON.stringify(rawStyles))}`;
 
         const styles =
             rawStyles[0] == null || rawStyles[0].raw == null
@@ -97,7 +98,11 @@ export function styled<
                 : interleave(rawStyles);
 
         const Styled: Component = () => {
+            const theme = useTheme();
+
             const props = useAttributes();
+            Object.assign(props, { theme });
+
             useCssLightDom(css.apply(props, [":host{", ...styles, "}"]));
             return h("host", null);
         };

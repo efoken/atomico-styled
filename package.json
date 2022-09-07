@@ -10,7 +10,6 @@
     "files": [
         "dist"
     ],
-    "sideEffects": false,
     "scripts": {
         "dev": "vite",
         "build": "tsup src/index.ts",

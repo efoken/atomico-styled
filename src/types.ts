@@ -1,26 +1,28 @@
 import { Interpolation } from "@emotion/serialize";
 import { Atomico } from "atomico/types/dom";
 
-export interface StyledComponent<
+export interface Theme {}
+
+interface StyledComponent<
     Props extends object,
     Base extends HTMLElement = HTMLElement
 > extends Atomico<Props, Base> {}
 
-export interface CreateStyledComponent<
+export interface StyledFunction<
     Props extends object,
     Base extends HTMLElement = HTMLElement
 > {
     <AdditionalProps extends object = {}>(
-        ...styles: Interpolation<Props & AdditionalProps & { theme: any }>[]
+        ...styles: Interpolation<Props & AdditionalProps & { theme: Theme }>[]
     ): StyledComponent<Props & AdditionalProps, Base>;
 
     (
         template: TemplateStringsArray,
-        ...styles: Interpolation<Props & { theme: any }>[]
+        ...styles: Interpolation<Props & { theme: Theme }>[]
     ): StyledComponent<Props, Base>;
 
     <AdditionalProps extends object>(
         template: TemplateStringsArray,
-        ...styles: Interpolation<Props & AdditionalProps & { theme: any }>[]
+        ...styles: Interpolation<Props & AdditionalProps & { theme: Theme }>[]
     ): StyledComponent<Props & AdditionalProps, Base>;
 }
