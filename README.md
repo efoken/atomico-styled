@@ -1,6 +1,6 @@
 # atomico-styled
 
-Styled components for Atomico.
+Styled Components for Atomico.
 
 ## Example
 
