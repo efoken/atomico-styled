@@ -1,12 +1,16 @@
 {
     "name": "atomico-styled",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "description": "Styled Components for Atomico",
     "author": "Eike Foken <eikefoken@gmail.com>",
     "license": "MIT",
     "main": "dist/index.cjs.js",
     "module": "dist/index.esm.js",
     "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "sideEffects": false,
     "scripts": {
         "dev": "vite",
         "build": "tsup src/index.ts",
