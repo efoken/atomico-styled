@@ -4,7 +4,7 @@ import hash from "@emotion/hash";
 import { c, Component, h } from "atomico/core";
 import { useTheme } from "./context";
 import { css } from "./css";
-import { StyledFunction } from "./types";
+import { StyledFunction, StyledOptions } from "./types";
 import { interleave } from "./utils";
 
 const elements: Partial<
@@ -88,9 +88,11 @@ const elements: Partial<
 export function styled<
     Tag extends keyof HTMLElementTagNameMap,
     Props extends object = {}
->(element: Tag): StyledFunction<Props> {
+>(element: Tag, { label }: StyledOptions = {}): StyledFunction<Props> {
     return (...rawStyles: any[] | any) => {
-        const name = `styled-${hash(JSON.stringify(rawStyles))}`;
+        const name = label
+            ? `styled-${label}`
+            : `styled-${element}-${hash(JSON.stringify(rawStyles))}`;
 
         const styles =
             rawStyles[0] == null || rawStyles[0].raw == null
@@ -107,9 +109,7 @@ export function styled<
             return h("host", null);
         };
 
-        Styled.props = {};
-
-        if (customElements.get(name) == null) {
+        if (!customElements.get(name)) {
             customElements.define(name, c(Styled, elements[element]), {
                 extends: element,
             });

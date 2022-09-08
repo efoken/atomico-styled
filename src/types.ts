@@ -3,6 +3,10 @@ import { Atomico } from "atomico/types/dom";
 
 export interface Theme {}
 
+export interface StyledOptions {
+    label?: string;
+}
+
 interface StyledComponent<
     Props extends object,
     Base extends HTMLElement = HTMLElement
