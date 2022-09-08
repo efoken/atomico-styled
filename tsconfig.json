@@ -1,7 +1,11 @@
 {
-  "compilerOptions": {
-    "jsx": "preserve",
-    "lib": ["dom", "esnext"],
-    "moduleResolution": "node"
-  }
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "jsxImportSource": "atomico",
+        "lib": ["dom", "esnext"],
+        "moduleResolution": "node",
+        "noEmit": true,
+        "strict": true
+    },
+    "exclude": ["dist", "node_modules"]
 }

@@ -8,7 +8,7 @@ export function css(strings: TemplateStringsArray, ...values: any[]): Sheet;
 
 export function css(...values: any[]): Sheet;
 
-export function css(...values: any[]) {
+export function css(this: any, ...values: any[]) {
     const serialized = serializeStyles(values, cache, this);
     return createCss([
         serialize(
