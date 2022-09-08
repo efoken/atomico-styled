@@ -1,5 +1,7 @@
 {
     "compilerOptions": {
+        "allowJs": true,
+        "esModuleInterop": true,
         "jsx": "react-jsx",
         "jsxImportSource": "atomico",
         "lib": ["dom", "esnext"],

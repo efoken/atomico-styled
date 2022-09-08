@@ -1,6 +1,6 @@
 {
     "name": "atomico-styled",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Styled Components for Atomico",
     "author": "Eike Foken <eikefoken@gmail.com>",
     "license": "MIT",
@@ -11,11 +11,13 @@
         "dist"
     ],
     "scripts": {
-        "dev": "vite",
         "build": "tsup src/index.ts",
-        "lint": "eslint --ignore-path .prettierignore \"**/*.{ts,tsx}\"",
+        "dev": "vite",
         "format": "prettier --write \"**/*.{ts,tsx}\"",
-        "release": "npm run build && npm publish"
+        "lint": "eslint --ignore-path .prettierignore \"**/*.{ts,tsx}\"",
+        "release": "npm run build && npm publish",
+        "test": "jest",
+        "test:watch": "jest --watch"
     },
     "dependencies": {
         "@atomico/hooks": "^3.46.1",
@@ -26,6 +28,7 @@
     },
     "devDependencies": {
         "@atomico/vite": "^1.5.1",
+        "@types/jest": "^29.0.0",
         "@types/stylis": "^4.0.2",
         "@typescript-eslint/eslint-plugin": "^5.36.2",
         "@typescript-eslint/parser": "^5.36.2",
@@ -33,7 +36,10 @@
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-airbnb-typescript": "^17.0.0",
         "eslint-config-prettier": "^8.5.0",
+        "jest": "^29.0.2",
+        "jest-environment-jsdom": "^29.0.2",
         "prettier": "^2.7.1",
+        "ts-jest": "^29.0.0-next.1",
         "tsup": "^6.2.3",
         "typescript": "^4.8.2",
         "vite": "^3.1.0"

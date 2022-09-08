@@ -1,0 +1,265 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`css @supports 1`] = `
+<style>
+  Mark {}
+  @supports (display: grid){:host{display:-ms-grid;display:grid;}}
+  Mark {}
+</style>
+`;
+
+exports[`css array fallback 1`] = `
+<style>
+  Mark {}
+  :host{color:yellow;color:hotpink;}
+  Mark {}
+</style>
+`;
+
+exports[`css array with explicit false 1`] = `
+<style>
+  Mark {}
+  :host{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+  Mark {}
+</style>
+`;
+
+exports[`css array with explicit true 1`] = `
+<style>
+  Mark {}
+  :host{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+  Mark {}
+</style>
+`;
+
+exports[`css auto px 1`] = `
+<style>
+  Mark {}
+  :host{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex:1;-ms-flex:1;flex:1;font-size:10px;--custom:5;}
+  Mark {}
+</style>
+`;
+
+exports[`css boolean as value 1`] = `
+<style>
+  Mark {}
+  :host{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+  Mark {}
+</style>
+`;
+
+exports[`css composition stuff 1`] = `
+<style>
+  Mark {}
+  :host{-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;}
+  Mark {}
+</style>
+`;
+
+exports[`css composition stuff 2`] = `
+<style>
+  Mark {}
+  :host{-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;}
+  Mark {}
+</style>
+`;
+
+exports[`css composition with objects 1`] = `
+<style>
+  Mark {}
+  :host{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:30px;height:calc(40vw - 50px);-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;}:host :hover{color:blue;}:host :after{content:" ";color:red;}@media(min-width: 420px){:host{color:green;}}
+  Mark {}
+</style>
+`;
+
+exports[`css computed key is only dynamic 1`] = `
+<style>
+  Mark {}
+  :host{font-size:10px;width:20px;}
+  Mark {}
+</style>
+`;
+
+exports[`css css variables 1`] = `
+<style>
+  Mark {}
+  :host{--some-var:1px;width:var(--some-var);}
+  Mark {}
+</style>
+`;
+
+exports[`css explicit & 1`] = `
+<style>
+  Mark {}
+  .another-class{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+  Mark {}
+</style>
+`;
+
+exports[`css explicit false 1`] = `
+<style>
+  Mark {}
+  
+  Mark {}
+</style>
+`;
+
+exports[`css falsy property value in object 1`] = `
+<style>
+  Mark {}
+  :host:{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+  Mark {}
+</style>
+`;
+
+exports[`css falsy value in nested selector on object 1`] = `
+<style>
+  Mark {}
+  :host :hover{color:hotpink;}
+  Mark {}
+</style>
+`;
+
+exports[`css float property 1`] = `
+<style>
+  Mark {}
+  :host{float:left;}
+  Mark {}
+</style>
+`;
+
+exports[`css handles array of objects 1`] = `
+<style>
+  Mark {}
+  :host{height:50px;width:20px;}
+  Mark {}
+</style>
+`;
+
+exports[`css handles more than 10 dynamic properties 1`] = `
+<style>
+  Mark {}
+  :host{-webkit-text-decoration:underline;text-decoration:underline;border-right:solid blue 54px;background:white;color:black;display:block;border-radius:3px;padding:25px;width:500px;z-index:100;font-size:18px;text-align:center;}
+  Mark {}
+</style>
+`;
+
+exports[`css handles objects 1`] = `
+<style>
+  Mark {}
+  :host{float:left;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;color:blue;font-size:20px;height:50px;width:20px;}
+  Mark {}
+</style>
+`;
+
+exports[`css multiline declaration 1`] = `
+<style>
+  Mark {}
+  display:-ms-grid;display:grid;grid:"AppBar" auto "Main" 1fr/1fr;
+  Mark {}
+</style>
+`;
+
+exports[`css multiline selector 1`] = `
+<style>
+  Mark {}
+  .my-class:hover .its-child{background:pink;}
+  Mark {}
+</style>
+`;
+
+exports[`css nested 1`] = `
+<style>
+  Mark {}
+  :host{color:yellow;}:host .some-class{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}:host .some-class .some-other-class{background-color:hotpink;}@media (max-width: 600px){:host .some-class{background-color:pink;}}
+  Mark {}
+</style>
+`;
+
+exports[`css nested array 1`] = `
+<style>
+  Mark {}
+  :host{display:inline;display:inline-block;display:block;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;display:table;color:darkorchid;font-size:16px;}:host:after{background-color:aquamarine;}
+  Mark {}
+</style>
+`;
+
+exports[`css nested at rule 1`] = `
+<style>
+  Mark {}
+  @media (min-width: 980px){:host{background-color:blue;}@supports (width: 100vw){:host{background-color:red;}}}
+  Mark {}
+</style>
+`;
+
+exports[`css null rule 1`] = `
+<style>
+  Mark {}
+  
+  Mark {}
+</style>
+`;
+
+exports[`css null value 1`] = `
+<style>
+  Mark {}
+  
+  Mark {}
+</style>
+`;
+
+exports[`css random expression 1`] = `
+<style>
+  Mark {}
+  :host{font-size:20px;background:green;}@media (min-width: 420px){:host{color:blue;width:96px;height:96px;line-height:40px;}}
+  Mark {}
+</style>
+`;
+
+exports[`css random interpolation with undefined values 1`] = `
+<style>
+  Mark {}
+  :host{-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;}
+  Mark {}
+</style>
+`;
+
+exports[`css registered styles as nested selector value in object 1`] = `
+<style>
+  Mark {}
+  :hover:display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;background-color:hotpink;
+  Mark {}
+</style>
+`;
+
+exports[`css rule after media query 1`] = `
+<style>
+  Mark {}
+  @media (min-width: 600px){:host{color:green;}}:host{color:hotpink;}
+  Mark {}
+</style>
+`;
+
+exports[`css simple composition 1`] = `
+<style>
+  Mark {}
+  :host{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;}:host :hover{color:hotpink;}
+  Mark {}
+</style>
+`;
+
+exports[`css weakmap 1`] = `
+<style>
+  Mark {}
+  :host{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+  Mark {}
+</style>
+`;
+
+exports[`css weakmap 2`] = `
+<style>
+  Mark {}
+  :host{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+  Mark {}
+</style>
+`;
