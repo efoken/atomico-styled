@@ -1,7 +1,7 @@
 import { useAttributes } from "@atomico/hooks/use-attributes";
 import { useCssLightDom } from "@atomico/hooks/use-css-light-dom";
 import hash from "@emotion/hash";
-import { c, Component, h } from "atomico/core";
+import { c, Component, h, css as createSheet } from "atomico/core";
 import { useTheme } from "./context";
 import { css } from "./css";
 import { StyledFunction, StyledOptions } from "./types";
@@ -105,7 +105,12 @@ export function styled<
             const props = useAttributes();
             Object.assign(props, { theme });
 
-            useCssLightDom(css.apply(props, [":host{", ...styles, "}"]));
+            useCssLightDom(
+                createSheet([
+                    css.apply(props, [":host{", ...styles, "}"]),
+                ] as any)
+            );
+
             return h("host", null);
         };
 
