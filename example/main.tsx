@@ -5,7 +5,7 @@ const theme = {
     colors: {
         brand: "red",
     },
-    space: 8,
+    space: 10,
 };
 
 const StyledTest = styled("p")<{ color: string }>`
@@ -15,9 +15,15 @@ const StyledTest = styled("p")<{ color: string }>`
     padding: ${(props) => (props.theme as any).space}px;
 
     &:hover {
-        color: grey;
+        color: lightgreen;
     }
 `;
+
+const StyledButton = styled("button")({
+    color: "black",
+    cursor: "pointer",
+    padding: 5,
+});
 
 function app() {
     const [color, setColor] = useState("black");
@@ -26,7 +32,7 @@ function app() {
         <host shadowDom>
             <ThemeProvider value={theme}>
                 <StyledTest color={color}>Test</StyledTest>
-                <button
+                <StyledButton
                     onclick={() =>
                         setColor((prevColor) =>
                             prevColor === "black" ? "white" : "black"
@@ -34,7 +40,7 @@ function app() {
                     }
                 >
                     Change color
-                </button>
+                </StyledButton>
             </ThemeProvider>
         </host>
     );
@@ -48,5 +54,5 @@ render(
     <host>
         <App />
     </host>,
-    document.querySelector("#app")
+    document.querySelector("#app")!
 );
