@@ -8,9 +8,9 @@ const theme = {
     space: 10,
 };
 
-const StyledTest = styled("p")<{ color: string }>`
+const StyledTest = styled("p")<{ dataStyle: { color: string } }>`
     background-color: ${(props) => (props.theme as any).colors.brand};
-    color: ${(props) => props.color};
+    color: ${(props) => props.dataStyle.color};
     margin-block: 20px;
     padding: ${(props) => (props.theme as any).space}px;
 
@@ -31,7 +31,7 @@ function app() {
     return (
         <host shadowDom>
             <ThemeProvider value={theme}>
-                <StyledTest color={color}>Test</StyledTest>
+                <StyledTest data-style={{ color }}>Test</StyledTest>
                 <StyledButton
                     onclick={() =>
                         setColor((prevColor) =>

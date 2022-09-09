@@ -1,7 +1,7 @@
 import { useAttributes } from "@atomico/hooks/use-attributes";
 import { useCssLightDom } from "@atomico/hooks/use-css-light-dom";
 import hash from "@emotion/hash";
-import { c, Component, h, css as createSheet } from "atomico/core";
+import { c, css as createSheet, h } from "atomico/core";
 import { useTheme } from "./context";
 import { css } from "./css";
 import { StyledFunction, StyledOptions } from "./types";
@@ -88,7 +88,10 @@ const elements: Partial<
 export function styled<
     Tag extends keyof HTMLElementTagNameMap,
     Props extends object = {}
->(element: Tag, { label }: StyledOptions = {}): StyledFunction<Props> {
+>(
+    element: Tag,
+    { label, resolver }: StyledOptions = {}
+): StyledFunction<Props> {
     return (...rawStyles: any[] | any) => {
         const name = label
             ? `styled-${label}`
@@ -99,27 +102,41 @@ export function styled<
                 ? rawStyles
                 : interleave(rawStyles);
 
-        const Styled: Component = () => {
+        const Styled = c(() => {
             const theme = useTheme();
 
             const props = useAttributes();
+
+            Object.entries(props).forEach(([key, value]) => {
+                try {
+                    props[key] = JSON.parse(value);
+                } catch {
+                    // do nothing
+                }
+            });
+
             Object.assign(props, { theme });
 
             useCssLightDom(
                 createSheet([
-                    css.apply(props, [":host{", ...styles, "}"]),
+                    css.apply(props, [
+                        ":host{",
+                        ...(resolver?.(props as any) ?? []),
+                        ...styles,
+                        "}",
+                    ]),
                 ] as any)
             );
 
             return h("host", null);
-        };
+        }, elements[element]);
 
         if (!customElements.get(name)) {
-            customElements.define(name, c(Styled, elements[element]), {
+            customElements.define(name, Styled, {
                 extends: element,
             });
         }
 
-        return customElements.get(name) as any;
+        return Styled as any;
     };
 }
